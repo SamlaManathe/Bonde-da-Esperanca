@@ -1,0 +1,35 @@
+# Arquivos de Configuração e Senhas
+.env
+config.php
+database.php
+*.local.php
+
+# Dependências
+vendor/
+composer.lock
+
+# Arquivos SQL / Banco de Dados
+*.sql
+*.sqlite
+*.db
+
+# Logs e Arquivos Temporários
+*.log
+tmp/
+cache/
+logs/
+.temp/
+
+# IDE e Editores
+.idea/
+.vscode/
+*.swp
+*.sublime-project
+*.sublime-workspace
+
+# Sistema Operacional
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+
