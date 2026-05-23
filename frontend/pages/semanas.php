@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>Semanas</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
   <aside class="menu">
     <h3>Bonde da Esperança</h3>
-    <a href="dashboard.html">Dashboard</a>
-    <a href="semanas.html">Semanas</a>
-    <a href="voluntarios.html">Voluntários</a>
+    <a href="dashboard.php">Dashboard</a>
+    <a href="semanas.php">Semanas</a>
+    <a href="voluntarios.php">Voluntários</a>
   </aside>
 
   <main class="conteudo">

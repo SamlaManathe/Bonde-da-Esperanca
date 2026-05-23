@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Bonde da Esperança</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="frontend/css/style.css">
 </head>
 <body class="home-page">
 
@@ -11,9 +11,9 @@
     <div class="logo">Bonde da Esperança</div>
 
     <nav>
-      <a href="index.html">Início</a>
+      <a href="index.php">Início</a>
       <a href="#">Sobre o projeto</a>
-      <a href="login.html" class="adm">adm</a>
+      <a href="frontend/pages/login.php" class="adm">adm</a>
     </nav>
   </header>
 
