@@ -1,0 +1,312 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f7f7f7;
+  color: #2f4f35;
+}
+
+/* TOPO DO LOGIN */
+.topo {
+  height: 55px;
+  background: #8fd18f;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  font-weight: bold;
+}
+
+/* LOGIN */
+.login-page {
+  min-height: 100vh;
+}
+
+.login-container {
+  height: calc(100vh - 110px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-login {
+  width: 360px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  padding: 35px;
+  background: white;
+}
+
+.card-login h2 {
+  margin-bottom: 20px;
+  color: #3f7f45;
+}
+
+.card-login label {
+  display: block;
+  margin: 10px 0 5px;
+  font-size: 14px;
+}
+
+.card-login input {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  background: #e5e5e5;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.card-login a {
+  font-size: 13px;
+  color: #555;
+  text-decoration: none;
+}
+
+.card-login button {
+  width: 100%;
+  padding: 14px;
+  background: #2f8f46;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  margin-top: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* MENU LATERAL */
+.menu {
+  width: 220px;
+  height: 100vh;
+  background: #4f9f55;
+  color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 25px 20px;
+}
+
+.menu h3 {
+  font-size: 16px;
+  margin-bottom: 35px;
+}
+
+.menu a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+/* CONTEÚDO */
+.conteudo {
+  margin-left: 220px;
+  padding: 60px;
+  min-height: 100vh;
+}
+
+.barra-topo {
+  background: #8fd18f;
+  height: 55px;
+  margin: -60px -60px 80px -60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.dashboard-box {
+  background: #4f9f55;
+  width: 420px;
+  height: 230px;
+  margin: 120px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.conteudo h1 {
+  color: #3f7f45;
+  margin-bottom: 5px;
+}
+
+.conteudo p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.abas {
+  margin-bottom: 15px;
+}
+
+.abas button {
+  background: #8fd18f;
+  border: none;
+  padding: 8px 15px;
+  color: white;
+  font-weight: bold;
+}
+
+.abas span {
+  margin-left: 20px;
+  color: #3f7f45;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: 1px solid #aaa;
+}
+
+th, td {
+  border-bottom: 1px solid #ddd;
+  padding: 18px;
+  text-align: left;
+  height: 50px;
+}
+
+th {
+  color: #333;
+}
+
+/* RODAPÉ */
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #4f9f55;
+  color: white;
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* PÁGINA INICIAL */
+
+.home-page {
+  background: #f7f7f7;
+  min-height: 100vh;
+}
+
+.topo {
+  justify-content: space-between;
+  padding: 0 35px;
+}
+
+.topo nav {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.topo nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.topo nav .adm {
+  background: #2f8f46;
+  padding: 8px 25px;
+  border-radius: 8px;
+}
+
+.home-container {
+  min-height: calc(100vh - 95px);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 50px 80px;
+  gap: 50px;
+}
+
+.lado-esquerdo {
+  width: 45%;
+  text-align: center;
+}
+
+.lado-esquerdo h1 {
+  color: #4f9f55;
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.lado-esquerdo p {
+  color: #555;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.icone-coracao {
+  font-size: 150px;
+  color: #2f3a4a;
+}
+
+.lado-direito {
+  width: 420px;
+}
+
+.card-cadastro,
+.card-apoio {
+  background: white;
+  border: 1px solid #999;
+  border-radius: 5px;
+  padding: 25px;
+  margin-bottom: 20px;
+}
+
+.card-cadastro h2,
+.card-apoio h2 {
+  color: #4f9f55;
+  margin-bottom: 15px;
+}
+
+.card-cadastro label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.card-cadastro input {
+  width: 100%;
+  padding: 14px;
+  background: #e5e5e5;
+  border: none;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.card-cadastro button,
+.card-apoio button {
+  width: 100%;
+  padding: 14px;
+  background: #2f8f46;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.card-apoio p {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.card-apoio .obs {
+  margin-top: 15px;
+  margin-bottom: 0;
+}
