@@ -27,10 +27,35 @@
       <tr>
         <th>Voluntário</th>
         <th>Telefone</th>
+        <th>Ações</th>
       </tr>
-      <tr><td></td><td></td></tr>
-      <tr><td></td><td></td></tr>
-      <tr><td></td><td></td></tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td class="acoes">
+          <button class="btn criar" title="Criar">➕</button>
+          <button class="btn modificar" title="Modificar">✏️</button>
+          <button class="btn apagar" title="Apagar">🗑️</button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td class="acoes">
+          <button class="btn criar" title="Criar">➕</button>
+          <button class="btn modificar" title="Modificar">✏️</button>
+          <button class="btn apagar" title="Apagar">🗑️</button>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td class="acoes">
+          <button class="btn criar" title="Criar">➕</button>
+          <button class="btn modificar" title="Modificar">✏️</button>
+          <button class="btn apagar" title="Apagar">🗑️</button>
+        </td>
+      </tr>
     </table>
   </main>
 

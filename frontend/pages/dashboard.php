@@ -39,8 +39,10 @@
     $dados = $resultado->fetch_assoc();
     $quantidadeVoluntarios = $dados['Quantidade'];
 
-    echo "<script>console.log('" . "Quantidade de voluntarios buscados com sucesso" . "')</script>";
+    echo "<script>console.log('" . "Quantidade de voluntários buscados com sucesso" . "')</script>";
     echo "<script>console.log('" . "Total de voluntários: " . $quantidadeVoluntarios . "')</script>";
+    
+    echo "<p>Total de voluntários:" . $quantidadeVoluntarios . "</p>";
   } else {
     echo "<script>console.log('" . "Erro ao contar a quantidade de voluntarios" . $conexao->error . "')</script>";
   }
