@@ -22,8 +22,6 @@
         <label>Senha</label>
         <input name="senha" type="password">
 
-        <a href="#">Esqueceu a senha?</a>
-
         <button type="submit">Entrar</button>
       </div>
     </main>
@@ -42,6 +40,8 @@
     header("Location: https://localhost/projetos/Bonde-da-Esperanca/frontend/pages/dashboard.php");
     
     exit();
+  } else {
+    echo "<p>Usuário ou senha inválidos.</p>";
   };
 
 ?>

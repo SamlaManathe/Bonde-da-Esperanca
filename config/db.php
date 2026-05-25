@@ -58,6 +58,32 @@ $sql_voluntarios = "
 $conexao->query($sql_saidas);
 $conexao->query($sql_voluntarios);
 
+/*
+se caso precisar popular o banco para testes:
+
+-- ==========================================
+-- TABELA DE SAÍDAS
+-- ==========================================
+INSERT INTO saidas (data_saida, prazo_limite_inscricao, status, criado_em) VALUES
+('2026-07-15', '2026-07-10 23:59:59', 'aberto', '2026-05-01 10:00:00'),
+('2026-06-01', '2026-05-20 18:00:00', 'encerrado', '2026-04-15 09:30:00'),
+('2026-08-20', '2026-08-15 23:59:59', 'aberto', '2026-05-20 14:00:00'),
+('2026-04-10', '2026-04-05 23:59:59', 'encerrado', '2026-03-01 08:00:00');
+
+-- ==========================================
+-- TABELA DE VOLUNTÁRIOS
+-- ==========================================
+INSERT INTO voluntarios (saida_id, nome, telefone, inscrito_em) VALUES
+(1, 'Carlos Silva', '(11) 99999-1111', '2026-05-02 11:15:00'),
+(1, 'Mariana Costa', '(21) 98888-2222', '2026-05-10 14:30:00'),
+(2, 'Ana Souza', '(31) 97777-3333', '2026-04-20 16:00:00'),
+(2, 'Bruno Alves', '(41) 96666-4444', '2026-05-15 10:22:00'),
+(2, 'Julia Mendes', '(51) 95555-5555', '2026-05-19 17:45:00'),
+(3, 'Ricardo Oliveira', '11944443333', '2026-05-21 09:00:00'),
+(4, 'Fernando Dias', '(81) 93333-2222', '2026-03-15 11:00:00'),
+(4, 'Beatriz Santos', '(11) 92222-1111', '2026-03-20 15:30:00');
+*/
+
 // echo "Banco e tabelas configurados com sucesso na porta 3307!";
 
 ?>
