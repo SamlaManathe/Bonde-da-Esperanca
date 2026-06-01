@@ -1,4 +1,5 @@
 <?php
+
 include_once __DIR__ . "/../../../config/db.php";
 include_once __DIR__ . "/../helpers.php";
 
@@ -19,3 +20,4 @@ if (!$stmt->execute()) {
 
 responderSucesso("Voluntário deletado com sucesso.", [], $voltar);
 ?>
+

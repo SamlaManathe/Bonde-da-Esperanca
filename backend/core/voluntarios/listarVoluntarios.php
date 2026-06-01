@@ -59,3 +59,4 @@ if (executadoDiretamente(__FILE__) || desejaJson()) {
     ]);
 }
 ?>
+

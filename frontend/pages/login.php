@@ -5,10 +5,20 @@
   <title>Login ADM</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body class="login-page">
 
-  <header class="topo">
+  <!-- HEADER COM MENU -->
+  <header class="topo" style="display:flex; justify-content:space-between; align-items:center; padding-right:30px;">
+
     <div class="logo">Bonde da Esperança</div>
+
+    <nav>
+      <a href="../../index.php">Início</a>
+      <a href="../../index.php#sobre">Sobre</a>
+      <a href="login.php">Admin</a>
+    </nav>
+
   </header>
 
   <form method="post">
@@ -38,10 +48,8 @@
 
   if ($admin == 'professor' && $senha == 'senha') {
     header("Location: https://localhost/projetos/Bonde-da-Esperanca/frontend/pages/dashboard.php");
-    
     exit();
   } else {
     echo "<p>Usuário ou senha inválidos.</p>";
   };
-
 ?>

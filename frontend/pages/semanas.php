@@ -16,13 +16,13 @@
   <aside class="menu">
     <h3>Bonde da Esperança</h3>
     <a href="dashboard.php">Dashboard</a>
-    <a href="semanas.php">Semanas</a>
+    <a href="semanas.php">Saídas</a>
     <a href="voluntarios.php">Voluntários</a>
   </aside>
 
   <main class="conteudo">
-    <h1>Semanas</h1>
-    <p>Gerencie as semanas do projeto</p>
+    <h1>Saídas</h1>
+    <p>Gerencie as saídas do projeto</p>
 
     <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
       <div class="abas">
@@ -57,8 +57,8 @@
             echo "  <td>" . ucfirst($saida['status']) . "</td>";
             echo "  <td class='acoes'>";
             // Botões redondos ajustados para não sumirem com o lápis/lixeira
-            echo "    <button type='button' class='btn modificar btn-centralizado' onclick='abrirModalAtualizar(" . $id_da_saida . ")'>✏️</button>";
-            echo "    <button type='button' class='btn apagar btn-centralizado' onclick='abrirModalDeletar(" . $id_da_saida . ")'>🗑️</button>";
+            echo "    <button type='button' class='btn modificar btn-centralizado' onclick='abrirModalAtualizar(" . $id_da_saida . ")'>✎</button>";
+            echo "    <button type='button' class='btn apagar btn-centralizado' onclick='abrirModalDeletar(" . $id_da_saida . ")'>🗑</button>";
             echo "  </td>";
             echo "</tr>";
         }
@@ -124,48 +124,7 @@
 
   <footer>Todos os direitos reservados</footer>
 
-  <script>
-    // Funções do Modal Criar
-    function abrirModalCriar() {
-        document.getElementById("ModalCriar").style.display = "block";
-    }
-    function fecharModalCriar() {
-        document.getElementById("ModalCriar").style.display = "none";
-    }
-    function fecharModal() { fecharModalCriar(); }
-
-    // Funções do Modal Atualizar
-    function abrirModalAtualizar(id) {
-        var url = "../../backend/core/saidas/atualizarSaidas.php?id=" + id;
-        document.getElementById("iframeAtualizar").src = url;
-        document.getElementById("modalAtualizar").style.display = "block";
-    }
-    function fecharModalAtualizar() {
-        document.getElementById("modalAtualizar").style.display = "none";
-        document.getElementById("iframeAtualizar").src = ""; 
-        window.location.reload(); 
-    }
-
-    // Funções do Modal Deletar
-    function abrirModalDeletar(id) {
-        document.getElementById("delete_id").value = id;
-        document.getElementById("modalDeletar").style.display = "block";
-    }
-    function fecharModalDeletar() {
-        document.getElementById("modalDeletar").style.display = "none";
-    }
-
-    // Fecha os modais se clicar fora deles
-    window.onclick = function(event) {
-        var mCriar = document.getElementById("ModalCriar");
-        var mAtualizar = document.getElementById("modalAtualizar");
-        var mDeletar = document.getElementById("modalDeletar");
-        
-        if (event.target == mCriar) mCriar.style.display = "none";
-        if (event.target == mAtualizar) fecharModalAtualizar();
-        if (event.target == mDeletar) mDeletar.style.display = "none";
-    }
-  </script>
+  <script src="../js/scripts.js"></script>
 
 </body>
 </html>

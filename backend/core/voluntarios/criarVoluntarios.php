@@ -53,3 +53,4 @@ if (!$stmt->execute()) {
 
 responderSucesso("Inscrição realizada com sucesso.", ["id" => $conexao->insert_id], $voltar . "?inscricao=sucesso");
 ?>
+
