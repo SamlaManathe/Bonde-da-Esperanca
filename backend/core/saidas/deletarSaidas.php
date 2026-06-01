@@ -1,25 +1,21 @@
 <?php
-    include "../../../config/db.php";
+include_once "../../../config/db.php";
+include_once __DIR__ . "/../helpers.php";
 
-    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        // Recebe o ID de forma oculta vindo do formulário do modal
-        $id = $_POST['id'];
+$voltar = "../../../frontend/pages/semanas.php";
+exigirPost($voltar);
 
-        if ($id) {
-            $sql = "DELETE FROM saidas WHERE id = '$id'";
+$id = validarId($_POST["id"] ?? null);
+if (!$id) {
+    responderErro("ID da saída inválido.", $voltar);
+}
 
-            if ($conexao->query($sql)) {
-                // Deletado com sucesso, retorna para a listagem
-                header("Location: ../../../frontend/pages/semanas.php");
-                exit();
-            } else {
-                echo "<p>Erro ao deletar saída: " . $conexao->error . "</p>";
-                echo "<p><a href='../../../frontend/pages/semanas.php'>Voltar</a></p>";
-            }
-        }
-    } else {
-        // Proteção: se tentarem acessar a página direto, joga de volta
-        header("Location: ../../../frontend/pages/semanas.php");
-        exit();
-    }
+$stmt = $conexao->prepare("DELETE FROM saidas WHERE id = ?");
+$stmt->bind_param("i", $id);
+
+if (!$stmt->execute()) {
+    responderErro("Erro ao deletar saída: " . $conexao->error, $voltar, 500);
+}
+
+responderSucesso("Saída deletada com sucesso.", [], $voltar);
 ?>

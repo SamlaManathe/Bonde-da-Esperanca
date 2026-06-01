@@ -14,7 +14,8 @@ if ($conexao_temp->connect_error) {
 
 }
 
-$conexao_temp->query("CREATE DATABASE IF NOT EXISTS $db");
+$conexao_temp->set_charset("utf8mb4");
+$conexao_temp->query("CREATE DATABASE IF NOT EXISTS `$db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci");
 
 $conexao_temp->close();
 
@@ -25,6 +26,8 @@ if ($conexao->connect_error) {
     die ("Erro na conexão como o banco: " . $conexao->connect_error);
 
 }
+
+$conexao->set_charset("utf8mb4");
 
 $sql_saidas = "
 
@@ -57,6 +60,19 @@ $sql_voluntarios = "
 
 $conexao->query($sql_saidas);
 $conexao->query($sql_voluntarios);
+
+if (!function_exists("criarIndiceSeNaoExistir")) {
+    function criarIndiceSeNaoExistir($conexao, $tabela, $indice, $sql) {
+        $resultado = $conexao->query("SHOW INDEX FROM `$tabela` WHERE Key_name = '$indice'");
+
+        if ($resultado && $resultado->num_rows === 0) {
+            $conexao->query($sql);
+        }
+    }
+}
+
+criarIndiceSeNaoExistir($conexao, "saidas", "idx_saidas_status", "ALTER TABLE saidas ADD INDEX idx_saidas_status (status)");
+criarIndiceSeNaoExistir($conexao, "voluntarios", "idx_voluntarios_saida", "ALTER TABLE voluntarios ADD INDEX idx_voluntarios_saida (saida_id)");
 
 /*
 se caso precisar popular o banco para testes:
