@@ -72,7 +72,7 @@
 
             <?php
 
-                while ($voluntario = $resultado_busca->fetch_assoc()) {
+                while ($voluntario = $resultado_busca_voluntarios->fetch_assoc()) {
 
                     echo "<tr>";
 

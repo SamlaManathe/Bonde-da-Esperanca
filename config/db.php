@@ -1,7 +1,7 @@
 <?php
 
-$host = "localhost";
-$port = 3307;
+$host = "127.0.0.1";
+$port = 3306;
 $db = "db_bonde_da_esperanca";
 $user = "root";
 $pass = "";

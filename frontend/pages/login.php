@@ -47,7 +47,7 @@
   $senha = $_POST['senha'];
 
   if ($admin == 'professor' && $senha == 'senha') {
-    header("Location: https://localhost/projetos/Bonde-da-Esperanca/frontend/pages/dashboard.php");
+    header("Location: https://localhost/atividades/Bonde-da-Esperanca/frontend/pages/dashboard.php");
     exit();
   } else {
     echo "<p>Usuário ou senha inválidos.</p>";
