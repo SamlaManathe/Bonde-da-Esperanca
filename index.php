@@ -30,7 +30,7 @@ $saida = $result->fetch_assoc();
 
     <nav style="margin-left: auto;">
       <a href="index.php">Início</a>
-      <a href="#sobre">Sobre</a>
+      <a href="frontend/pages/sobre.php">Sobre</a>
       <a href="frontend/pages/login.php" class="adm">Admin</a>
     </nav>
 

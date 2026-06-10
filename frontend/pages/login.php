@@ -1,3 +1,27 @@
+<?php
+session_start();
+
+if (isset($_SESSION['admin']) && $_SESSION['admin'] === true) {
+    header("Location: dashboard.php");
+    exit();
+}
+
+$erroLogin = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $admin = $_POST['login'] ?? '';
+    $senha = $_POST['senha'] ?? '';
+
+    if ($admin === 'professor' && $senha === 'senha') {
+        $_SESSION['admin'] = true;
+        header("Location: dashboard.php");
+        exit();
+    }
+
+    $erroLogin = "Usuário ou senha inválidos.";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -15,7 +39,7 @@
 
     <nav>
       <a href="../../index.php">Início</a>
-      <a href="../../index.php#sobre">Sobre</a>
+      <a href="sobre.php">Sobre</a>
       <a href="login.php">Admin</a>
     </nav>
 
@@ -27,12 +51,16 @@
         <h2>Login de ADM</h2>
         
         <label>Login</label>
-        <input name="login" type="text">
+        <input name="login" type="text" required>
 
         <label>Senha</label>
-        <input name="senha" type="password">
+        <input name="senha" type="password" required>
 
         <button type="submit">Entrar</button>
+
+        <?php if ($erroLogin): ?>
+          <p class="erro-login" style="color:#d9534f; margin-top:15px;"><?php echo htmlspecialchars($erroLogin, ENT_QUOTES, 'UTF-8'); ?></p>
+        <?php endif; ?>
       </div>
     </main>
   </form>
@@ -41,15 +69,3 @@
 
 </body>
 </html>
-
-<?php
-  $admin = $_POST['login'];
-  $senha = $_POST['senha'];
-
-  if ($admin == 'professor' && $senha == 'senha') {
-    header("Location: https://localhost/atividades/Bonde-da-Esperanca/frontend/pages/dashboard.php");
-    exit();
-  } else {
-    echo "<p>Usuário ou senha inválidos.</p>";
-  };
-?>

@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
+    header("Location: login.php");
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -14,8 +23,7 @@
 
     <nav>
       <a href="../../index.php">Início</a>
-      <a href="../../index.php#sobre">Sobre</a>
-      <a href="dashboard.php">Admin</a>
+      <a href="logout.php">Sair</a>
     </nav>
 
   </header>
