@@ -1,7 +1,17 @@
 <?php
-  ob_start();
-  include "../../backend/core/saidas/listarSaidas.php";
-  ob_end_clean();
+session_start();
+
+if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
+    header("Location: login.php");
+    exit();
+}
+
+ob_start();
+include "../../backend/core/saidas/listarSaidas.php";
+ob_end_clean();
+
+$buscaValor = htmlspecialchars($busca ?? '', ENT_QUOTES, 'UTF-8');
+$buscaParam = $buscaValor !== '' ? '&busca=' . urlencode($buscaValor) : '';
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +22,14 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+
+  <header class="topo" style="display:flex; justify-content:space-between; align-items:center; padding-right:30px;">
+    <div class="logo">Bonde da Esperança</div>
+    <nav>
+      <a href="../../index.php">Início</a>
+      <a href="logout.php">Sair</a>
+    </nav>
+  </header>
 
   <aside class="menu">
     <h3>Bonde da Esperança</h3>
@@ -24,13 +42,20 @@
     <h1>Saídas</h1>
     <p>Gerencie as saídas do projeto</p>
 
-    <div style="margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
-      <div class="abas">
-        <a href="?status=aberto"><button type="button">Ativas</button></a>
-        <a href="?status=encerrado"><button type="button">Arquivadas</button></a>
-      </div>
+    <div style="margin-bottom: 20px; display: flex; flex-direction: column; gap: 15px;">
+      <form method="get" style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+        <input type="text" name="busca" placeholder="Pesquisar saídas..." value="<?php echo $buscaValor; ?>">
+        <button type="submit" class="btn-texto verde">Filtrar</button>
+      </form>
 
-      <button type="button" class="btn-texto verde" onclick="abrirModalCriar()" title="Cadastrar Nova Semana">Criar saída</button>
+      <div style="display:flex; justify-content: space-between; align-items:center; gap: 15px; flex-wrap:wrap;">
+        <div class="abas">
+          <a href="?status=aberto<?php echo $buscaParam; ?>"><button type="button">Ativas</button></a>
+          <a href="?status=encerrado<?php echo $buscaParam; ?>"><button type="button">Arquivadas</button></a>
+        </div>
+
+        <button type="button" class="btn-texto verde" onclick="abrirModalCriar()" title="Cadastrar Nova Semana">Criar saída</button>
+      </div>
     </div>
     
     <table>
@@ -56,7 +81,7 @@
             echo "  <td>" . $total_inscritos . "</td>";
             echo "  <td>" . ucfirst($saida['status']) . "</td>";
             echo "  <td class='acoes'>";
-            // Botões redondos ajustados para não sumirem com o lápis/lixeira
+            echo "    <button type='button' class='btn info btn-centralizado' onclick='abrirModalVoluntarios(" . $id_da_saida . ")'>👥</button>";
             echo "    <button type='button' class='btn modificar btn-centralizado' onclick='abrirModalAtualizar(" . $id_da_saida . ")'>✎</button>";
             echo "    <button type='button' class='btn apagar btn-centralizado' onclick='abrirModalDeletar(" . $id_da_saida . ")'>🗑</button>";
             echo "  </td>";
@@ -119,6 +144,14 @@
           <button type="submit" class="btn-texto vermelho">Sim, Excluir</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <div id="modalVoluntarios" class="modal-overlay">
+    <div class="modal-container">
+      <span onclick="fecharModalVoluntarios()" class="modal-fechar">&times;</span>
+      <h2>Voluntários da saída</h2>
+      <div id="voluntariosLista"></div>
     </div>
   </div>
 

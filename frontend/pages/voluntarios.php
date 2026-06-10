@@ -1,12 +1,27 @@
 <?php
-    ob_start();
-    include "../../backend/core/voluntarios/listarVoluntarios.php";
-    ob_end_clean();
+session_start();
 
-    include "../../config/db.php";
+if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
+    header("Location: login.php");
+    exit();
+}
 
-    $sql_saidas = "SELECT * FROM saidas ORDER BY data_saida ASC";
-    $resultado_saidas = $conexao->query($sql_saidas);
+ob_start();
+include "../../backend/core/voluntarios/listarVoluntarios.php";
+ob_end_clean();
+
+include "../../config/db.php";
+
+$sql_saidas = "SELECT * FROM saidas ORDER BY data_saida ASC";
+$resultado_saidas = $conexao->query($sql_saidas);
+$saidas = [];
+if ($resultado_saidas) {
+    $saidas = $resultado_saidas->fetch_all(MYSQLI_ASSOC);
+}
+
+$buscaValor = htmlspecialchars($_GET['busca'] ?? '', ENT_QUOTES, 'UTF-8');
+$statusValor = htmlspecialchars($_GET['status'] ?? '', ENT_QUOTES, 'UTF-8');
+$saidaSelecionada = htmlspecialchars($_GET['saida_id'] ?? '', ENT_QUOTES, 'UTF-8');
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +37,14 @@
 
 <body>
 
+    <header class="topo" style="display:flex; justify-content:space-between; align-items:center; padding-right:30px;">
+        <div class="logo">Bonde da Esperança</div>
+        <nav>
+            <a href="../../index.php">Início</a>
+            <a href="logout.php">Sair</a>
+        </nav>
+    </header>
+
     <aside class="menu">
 
         <h3>Bonde da Esperança</h3>
@@ -36,6 +59,28 @@
 
         <h1>Voluntários</h1>
         <p>Gerencie os voluntários do projeto</p>
+
+        <form method="get" style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:20px;">
+            <input type="text" name="busca" placeholder="Buscar voluntário ou telefone" value="<?php echo $buscaValor; ?>">
+
+            <select name="status">
+                <option value="">Todos os status</option>
+                <option value="aberto" <?php echo $statusValor === 'aberto' ? 'selected' : ''; ?>>Aberto</option>
+                <option value="encerrado" <?php echo $statusValor === 'encerrado' ? 'selected' : ''; ?>>Encerrado</option>
+            </select>
+
+            <select name="saida_id">
+                <option value="">Todas as saídas</option>
+                <?php
+                    foreach ($saidas as $saida) {
+                        $selecionado = $saidaSelecionada == $saida['id'] ? 'selected' : '';
+                        echo "<option value='" . $saida['id'] . "' " . $selecionado . ">" . date('d/m/Y', strtotime($saida['data_saida'])) . "</option>";
+                    }
+                ?>
+            </select>
+
+            <button type="submit" class="btn-texto verde">Filtrar</button>
+        </form>
 
         <div style="
             margin-bottom: 20px;
@@ -72,7 +117,7 @@
 
             <?php
 
-                while ($voluntario = $resultado_busca->fetch_assoc()) {
+                while ($voluntario = $resultado_busca_voluntarios->fetch_assoc()) {
 
                     echo "<tr>";
 
@@ -138,10 +183,10 @@
 
                         <?php
 
-                            while($saida = $resultado_saidas->fetch_assoc()) {
+                            foreach ($saidas as $saida) {
 
                                 echo "
-                                    <option value='{$saida['id']}'>
+                                    <option value='" . $saida['id'] . "'>
                                         " . date('d/m/Y', strtotime($saida['data_saida'])) . "
                                     </option>
                                 ";

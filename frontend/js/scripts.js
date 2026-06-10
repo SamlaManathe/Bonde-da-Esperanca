@@ -27,11 +27,52 @@ function fecharModalDeletar() {
     document.getElementById("modalDeletar").style.display = "none";
 }
 
-window.onclick = function(event) {
+function abrirModalVoluntarios(saidaId) {
+    var modal = document.getElementById("modalVoluntarios");
+    var container = document.getElementById("voluntariosLista");
+    container.innerHTML = "<p>Carregando voluntários...</p>";
+    modal.style.display = "block";
 
+    fetch("../../backend/core/voluntarios/listarVoluntarios.php?saida_id=" + encodeURIComponent(saidaId) + "&format=json")
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            if (!data || !Array.isArray(data.voluntarios)) {
+                container.innerHTML = "<p>Não foi possível carregar os voluntários.</p>";
+                return;
+            }
+
+            if (data.voluntarios.length === 0) {
+                container.innerHTML = "<p>Nenhum voluntário cadastrado para esta saída.</p>";
+                return;
+            }
+
+            var html = "<table><tr><th>Nome</th><th>Telefone</th><th>Inscrito em</th></tr>";
+            data.voluntarios.forEach(function(voluntario) {
+                html += "<tr>" +
+                    "<td>" + voluntario.nome + "</td>" +
+                    "<td>" + voluntario.telefone + "</td>" +
+                    "<td>" + voluntario.inscrito_em + "</td>" +
+                "</tr>";
+            });
+            html += "</table>";
+            container.innerHTML = html;
+        })
+        .catch(function() {
+            container.innerHTML = "<p>Erro ao carregar voluntários.</p>";
+        });
+}
+
+function fecharModalVoluntarios() {
+    document.getElementById("modalVoluntarios").style.display = "none";
+}
+
+window.onclick = function(event) {
     var mCriar = document.getElementById("ModalCriar");
     var mAtualizar = document.getElementById("modalAtualizar");
     var mDeletar = document.getElementById("modalDeletar");
+    var mVoluntarios = document.getElementById("modalVoluntarios");
 
     if (event.target == mCriar)
         mCriar.style.display = "none";
@@ -41,4 +82,7 @@ window.onclick = function(event) {
 
     if (event.target == mDeletar)
         mDeletar.style.display = "none";
+
+    if (event.target == mVoluntarios)
+        fecharModalVoluntarios();
 }
