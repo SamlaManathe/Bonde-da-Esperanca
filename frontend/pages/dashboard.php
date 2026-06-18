@@ -78,8 +78,7 @@ if (!isset($_SESSION['admin']) || $_SESSION['admin'] !== true) {
             $data = date('d/m/Y', strtotime($linha['data_saida']));
 
             echo "<h2 style='font-size:20px; font-weight:normal; margin:5px 0;'>
-                    " . $data . " → " . $linha['total'] . " voluntários
-                  </h2>";
+                    " . $data . " → " . $linha['total'];
           }
 
         } else {

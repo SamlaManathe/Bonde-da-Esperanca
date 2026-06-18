@@ -42,8 +42,8 @@
 
       <div class="card-apoio">
         <h2>Contato</h2>
-        <p>Para dúvidas ou apoio, envie uma mensagem pelo botão abaixo.</p>
-        <button class="btn-texto verde">Enviar mensagem</button>
+        <p>Para dúvidas ou apoio, envie uma mensagem no nosso instagram pelo botão abaixo.</p>
+        <a href = "https://www.instagram.com/bondedaesperancaa/" target="_blank"><button class="btn-texto verde">Clique aqui</button></a>
       </div>
     </section>
   </main>
