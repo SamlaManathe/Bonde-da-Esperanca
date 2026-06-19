@@ -51,7 +51,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         responderErro("Erro ao atualizar voluntário: " . $conexao->error, $voltar, 500);
     }
 
-    responderSucesso("Voluntário atualizado com sucesso.", [], $voltar);
+    echo "
+    <script>
+        alert('Voluntário atualizado com sucesso!');
+        window.parent.fecharModalAtualizar();
+    </script>
+    ";
+    exit();
 }
 
 $stmt = $conexao->prepare("SELECT * FROM voluntarios WHERE id = ?");

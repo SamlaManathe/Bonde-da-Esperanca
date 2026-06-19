@@ -6,16 +6,27 @@ function fecharModalCriar() {
     document.getElementById("ModalCriar").style.display = "none";
 }
 
-function abrirModalAtualizar(id) {
-    var url = "../../backend/core/voluntarios/atualizarVoluntarios.php?id=" + id;
-    document.getElementById("iframeAtualizar").src = url;
+function abrirModalAtualizarVoluntario(id) {
+    document.getElementById("iframeAtualizar").src =
+        "../../backend/core/voluntarios/atualizarVoluntarios.php?id=" + id;
+
+    document.getElementById("modalAtualizar").style.display = "block";
+}
+
+function abrirModalAtualizarSaida(id) {
+    document.getElementById("iframeAtualizar").src =
+        "../../backend/core/saidas/atualizarSaidas.php?id=" + id;
+
     document.getElementById("modalAtualizar").style.display = "block";
 }
 
 function fecharModalAtualizar() {
     document.getElementById("modalAtualizar").style.display = "none";
     document.getElementById("iframeAtualizar").src = "";
-    window.location.reload();
+
+    setTimeout(function() {
+        location.reload();
+    }, 100);
 }
 
 function abrirModalDeletar(id) {

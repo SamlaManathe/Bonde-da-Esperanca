@@ -37,17 +37,29 @@ $saidaSelecionada = htmlspecialchars($_GET['saida_id'] ?? '', ENT_QUOTES, 'UTF-8
 
 <body>
 
-    <header class="topo" style="display:flex; justify-content:space-between; align-items:center; padding-right:30px;">
-        <div class="logo">Bonde da Esperança</div>
-        <nav>
-            <a href="../../index.php">Início</a>
-            <a href="logout.php">Sair</a>
+    <header class="topo" style="display:flex !important; justify-content:space-between !important; align-items:center !important; padding: 0 40px 0 260px !important; height: 60px !important; background: #3B5D11 !important; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+
+        <div style="font-size:20px; font-weight:bold; color:white;">
+            Bonde da Esperança
+        </div>
+
+        <nav style="display:flex; gap:15px;">
+            <a href="../../index.php"
+            style="color:white; text-decoration:none; background:rgba(255,255,255,0.15); padding:8px 16px; border-radius:6px;">
+            Início
+            </a>
+
+            <a href="logout.php"
+            style="color:white; text-decoration:none; background:#d9534f; padding:8px 16px; border-radius:6px; font-weight:bold;">
+            Sair
+            </a>
         </nav>
+
     </header>
 
     <aside class="menu">
 
-        <h3>Bonde da Esperança</h3>
+        <h3>Painel de Controle</h3>
 
         <a href="dashboard.php">Dashboard</a>
         <a href="semanas.php">Saídas</a>
@@ -55,53 +67,90 @@ $saidaSelecionada = htmlspecialchars($_GET['saida_id'] ?? '', ENT_QUOTES, 'UTF-8
 
     </aside>
 
-    <main class="conteudo">
+    <main class="conteudo"
+    style="
+    margin-left:220px;
+    padding:40px;
+    min-height:calc(100vh - 60px);
+    background:#f4f6f3;">
 
-        <h1>Voluntários</h1>
-        <p>Gerencie os voluntários do projeto</p>
+        <h2 style="
+        color:#3B5D11;
+        font-size:26px;
+        font-weight:bold;
+        margin-bottom:8px;">
+        Voluntários
+        </h2>
 
-        <form method="get" style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:20px;">
-            <input type="text" name="busca" placeholder="Buscar voluntário ou telefone" value="<?php echo $buscaValor; ?>">
-
-            <select name="status">
-                <option value="">Todos os status</option>
-                <option value="aberto" <?php echo $statusValor === 'aberto' ? 'selected' : ''; ?>>Aberto</option>
-                <option value="encerrado" <?php echo $statusValor === 'encerrado' ? 'selected' : ''; ?>>Encerrado</option>
-            </select>
-
-            <select name="saida_id">
-                <option value="">Todas as saídas</option>
-                <?php
-                    foreach ($saidas as $saida) {
-                        $selecionado = $saidaSelecionada == $saida['id'] ? 'selected' : '';
-                        echo "<option value='" . $saida['id'] . "' " . $selecionado . ">" . date('d/m/Y', strtotime($saida['data_saida'])) . "</option>";
-                    }
-                ?>
-            </select>
-
-            <button type="submit" class="btn-texto verde">Filtrar</button>
-        </form>
+        <p style="
+        color:#666;
+        margin-bottom:30px;">
+        Gerencie os voluntários do projeto
+        </p>
 
         <div style="
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        ">
+        background:white;
+        padding:25px;
+        border-radius:12px;
+        box-shadow:0 4px 12px rgba(0,0,0,0.05);
+        margin-bottom:25px;">
 
-            <div class="abas">
-                <button type="button">Voluntários</button>
+            <div style="
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:15px;
+            flex-wrap:wrap;">
+
+                <form method="get"
+                    style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+
+                <input
+                    type="text"
+                    name="busca"
+                    placeholder="Buscar voluntário ou telefone"
+                    value="<?php echo $buscaValor; ?>">
+
+                <select name="status">
+                    <option value="">Todos os status</option>
+                    <option value="aberto" <?php echo $statusValor === 'aberto' ? 'selected' : ''; ?>>
+                        Aberto
+                    </option>
+                    <option value="encerrado" <?php echo $statusValor === 'encerrado' ? 'selected' : ''; ?>>
+                        Encerrado
+                    </option>
+                </select>
+
+                <select name="saida_id">
+                    <option value="">Todas as saídas</option>
+
+                    <?php
+                    foreach ($saidas as $saida) {
+                        $selecionado = $saidaSelecionada == $saida['id'] ? 'selected' : '';
+
+                        echo "
+                        <option value='{$saida['id']}' {$selecionado}>
+                        " . date('d/m/Y', strtotime($saida['data_saida'])) . "
+                        </option>";
+                    }
+                    ?>
+
+                </select>
+
+                <button type="submit" class="btn-texto verde">
+                    Filtrar
+                </button>
+
+                </form>
+
+                <button
+                    type="button"
+                    class="btn-texto verde"
+                    onclick="abrirModalCriar()">
+                    Criar voluntário
+                </button>
+
             </div>
-
-            <button
-                type="button"
-                class="btn-texto verde"
-                onclick="abrirModalCriar()"
-                title="Cadastrar Novo Voluntário">
-
-                Criar voluntário
-
-            </button>
 
         </div>
 
@@ -139,7 +188,7 @@ $saidaSelecionada = htmlspecialchars($_GET['saida_id'] ?? '', ENT_QUOTES, 'UTF-8
                         <button
                             type='button'
                             class='btn modificar btn-centralizado'
-                            onclick='abrirModalAtualizar(" . $voluntario['id'] . ")'>✎</button>
+                            onclick='abrirModalAtualizarVoluntario(" . $voluntario['id'] . ")'>✎</button>
                     ";
 
                     echo "

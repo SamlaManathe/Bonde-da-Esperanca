@@ -58,8 +58,21 @@ $sql_voluntarios = "
 
 ";
 
+$sql_administradores = "
+
+    CREATE TABLE IF NOT EXISTS administradores (
+        id INT NOT NULL AUTO_INCREMENT,
+        login VARCHAR(50) NOT NULL,
+        senha VARCHAR(100) NOT NULL,
+
+        PRIMARY KEY (id)
+    );
+
+";
+
 $conexao->query($sql_saidas);
 $conexao->query($sql_voluntarios);
+$conexao->query($sql_administradores);
 
 if (!function_exists("criarIndiceSeNaoExistir")) {
     function criarIndiceSeNaoExistir($conexao, $tabela, $indice, $sql) {

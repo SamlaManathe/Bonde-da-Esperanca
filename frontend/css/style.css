@@ -7,18 +7,19 @@
 
 body {
   background: #f7f7f7;
-  color: #2f4f35;
+  color: #3B5D11;
 }
 
 /* TOPO DO LOGIN */
 .topo {
-  height: 55px;
-  background: #8fd18f;
+  height: 65px;
+  background: #3B5D11;
   color: white;
   display: flex;
   align-items: center;
   padding-left: 30px;
   font-weight: bold;
+  
 }
 
 /* LOGIN */
@@ -34,16 +35,17 @@ body {
 }
 
 .card-login {
-  width: 360px;
-  border: 1px solid #999;
-  border-radius: 5px;
+  width: 420px;
+  border: none;
+  border-radius: 12px;
   padding: 35px;
   background: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
 .card-login h2 {
   margin-bottom: 20px;
-  color: #3f7f45;
+  color: #3B5D11;
 }
 
 .card-login label {
@@ -70,7 +72,7 @@ body {
 .card-login button {
   width: 100%;
   padding: 14px;
-  background: #2f8f46;
+  background: #3B5D11;
   color: white;
   border: none;
   border-radius: 5px;
@@ -83,7 +85,7 @@ body {
 .menu {
   width: 220px;
   height: 100vh;
-  background: #4f9f55;
+  background: #4d7917;
   color: white;
   position: fixed;
   left: 0;
@@ -112,7 +114,7 @@ body {
 }
 
 .barra-topo {
-  background: #8fd18f;
+  background: #3B5D11;
   height: 55px;
   margin: -60px -60px 80px -60px;
   display: flex;
@@ -135,7 +137,7 @@ body {
 }
 
 .conteudo h1 {
-  color: #3f7f45;
+  color: #3B5D11;
   margin-bottom: 5px;
 }
 
@@ -149,7 +151,7 @@ body {
 }
 
 .abas button {
-  background: #8fd18f;
+  background: #3B5D11;
   border: none;
   padding: 8px 15px;
   color: white;
@@ -158,7 +160,7 @@ body {
 
 .abas span {
   margin-left: 20px;
-  color: #3f7f45;
+  color: #3B5D11;
 }
 
 table {
@@ -184,7 +186,7 @@ footer {
   position: fixed;
   bottom: 0;
   left: 0;
-  background: #4f9f55;
+  background: #3B5D11;
   color: white;
   height: 40px;
   width: 100%;
@@ -214,7 +216,7 @@ footer {
 }
 
 .lado-esquerdo h1 {
-  color: #4f9f55;
+  color: #3B5D11;
   font-size: 32px;
   margin-bottom: 15px;
 }
@@ -245,7 +247,7 @@ footer {
 
 .card-cadastro h2,
 .card-apoio h2 {
-  color: #4f9f55;
+  color: #3B5D11;
   margin-bottom: 15px;
 }
 
@@ -268,7 +270,7 @@ footer {
 .card-apoio button {
   width: 100%;
   padding: 14px;
-  background: #2f8f46;
+  background: #3B5D11;
   color: white;
   border: none;
   border-radius: 5px;
@@ -344,7 +346,7 @@ footer {
 }
 
 .btn-texto.verde {
-  background: #2f8f46;
+  background: #3B5D11;
   color: white;
 }
 
@@ -380,7 +382,7 @@ footer {
 /* Mantido por compatibilidade caso use em outro lugar */
 .btn-criar {
   padding: 10px 20px;
-  background: #2f8f46;
+  background: #3B5D11;
   color: white;
   border: none;
   border-radius: 5px;
@@ -434,7 +436,7 @@ footer {
 
 .modal-container h2 {
   margin-bottom: 15px;
-  color: #3f7f45;
+  color: #3B5D11;
 }
 
 .modal-container p {
@@ -486,4 +488,65 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.card-apoio {
+    background: white;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.card-apoio h2 {
+    color: #3B5D11;
+    margin-bottom: 20px;
+}
+
+.card-apoio p {
+    color: #555;
+    line-height: 1.7;
+}
+
+.btn-texto.verde {
+    background: #3B5D11;
+    border-radius: 8px;
+}
+
+.btn-texto.verde:hover {
+    opacity: .9;
+}
+
+table {
+  border: none;
+}
+
+th {
+  background: #f8faf7;
+  color: #3B5D11;
+  font-weight: bold;
+}
+
+td {
+  background: white;
+}
+
+tr:hover td {
+  background: #fafafa;
+}
+
+input[type="text"] {
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.abas button {
+  background: #3B5D11;
+  border-radius: 8px;
+  padding: 10px 16px;
+}
+
+.info {
+  background: #5bc0de;
+  color: white;
 }
